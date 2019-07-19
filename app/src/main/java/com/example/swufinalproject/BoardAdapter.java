@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -101,6 +102,10 @@ public class BoardAdapter extends BaseAdapter {
             imgBar.setImageResource(R.drawable.bar_100per);
         }
 
+        if (TextUtils.equals(boardBean.full,"full")) {
+            index.setVisibility(View.VISIBLE);
+        }
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -116,10 +121,6 @@ public class BoardAdapter extends BaseAdapter {
                 mContext.startActivity(intent);
             }
         });
-
-        if (boardBean.full == "full") {
-            index.setVisibility(View.VISIBLE);
-        }
 
         return view;
     }

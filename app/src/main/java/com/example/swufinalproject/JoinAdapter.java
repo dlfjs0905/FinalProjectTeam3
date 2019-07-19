@@ -2,6 +2,7 @@ package com.example.swufinalproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,6 +78,10 @@ public class JoinAdapter extends BaseAdapter {
             imgBar.setImageResource(R.drawable.bar_100per);
         }
 
+        if (TextUtils.equals(boardBean2.full,"full")) {
+            index.setVisibility(View.VISIBLE);
+        }
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,10 +96,6 @@ public class JoinAdapter extends BaseAdapter {
                 mContextJoin.startActivity(intent);
             }
         });
-
-        if (boardBean2.full == "full") {
-            index.setVisibility(View.VISIBLE);
-        }
 
         return view;
     }
