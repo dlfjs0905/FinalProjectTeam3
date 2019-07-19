@@ -201,15 +201,15 @@ public class WriteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+
                 String edtFoodWrite_n = edtFoodWrite.getText().toString();
                 String edtPrice_n = edtPrice.getText().toString() ;
                 String writerPrice_n = writerPrice.getText().toString() ;
                 String edtMemo_n = edtMemo.getText().toString();
                 String edtlink_n = edtlink.getText().toString();
-                String edtpwd_n = edtpwd.getText().toString();
 
                 if (edtFoodWrite_n.matches("") || edtPrice_n.matches("") || writerPrice_n.matches("") || edtMemo_n.matches("")
-                        || edtlink_n.matches("")  || edtpwd_n.matches("") ) {
+                        || edtlink_n.matches("") ) {
                     Toast.makeText(getApplicationContext(), "입력하지 않은 칸이 있습니다", Toast.LENGTH_SHORT).show();
                     return;
                 }
