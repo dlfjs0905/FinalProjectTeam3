@@ -30,6 +30,11 @@ public class JoinAdapter extends BaseAdapter {
         mJoinList = joinList;
     }
 
+    public void setList(List<BoardBean> joinList) {
+        mJoinList = joinList;
+    }
+
+
     @Override
     public int getCount() {
         return mJoinList.size();

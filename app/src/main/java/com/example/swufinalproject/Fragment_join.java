@@ -59,17 +59,18 @@ public class Fragment_join extends Fragment {
                     BoardBean bean = snapshot.getValue(BoardBean.class);
 
                     if(bean.getUserList().contains(mFirebaseAuth.getCurrentUser().getEmail())){
-                        mJoinList.add(0, bean);/*
                         if (TextUtils.equals(bean.full, "unfull")) {
                             mJoinList.add(0, bean);
                         } if (TextUtils.equals(bean.full, "full")) {
                             mJoinList2.add(0, bean);
                         }
-                        mJoinList.addAll(mJoinList2);*/
                     }
                 }
+                mJoinList.addAll(mJoinList2);
+
                 //바뀐 데이터로 Refresh 한다.
                 if(mJoinAdapter != null) {
+                    mJoinAdapter.setList(mJoinList);
                     mJoinAdapter.notifyDataSetChanged();
                 }
             }
