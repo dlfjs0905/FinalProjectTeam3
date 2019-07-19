@@ -9,12 +9,14 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -68,6 +70,7 @@ public class DetailActivity extends AppCompatActivity {
         mBoardBean = (BoardBean)getIntent().getSerializableExtra("totalPrice");
 
         Button btnjoin = findViewById(R.id.btnJoin);
+        ImageButton btnkakaolink = findViewById(R.id.btnkakaolink);
 
         onResume();
 
@@ -154,6 +157,14 @@ public class DetailActivity extends AppCompatActivity {
                 });
                 dialogBuilder.show();
 
+            }
+        });
+
+        btnkakaolink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mBoardBean.kakaolink));
+                startActivity(intent);
             }
         });
 
