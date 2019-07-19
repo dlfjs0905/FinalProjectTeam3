@@ -330,25 +330,6 @@ public class WriteActivity extends AppCompatActivity {
             googleMap.addMarker(markerOptions).showInfoWindow();
             googleMap.animateCamera(CameraUpdateFactory.zoomTo(17));
 
-            //맵을 클릭했을 때 이벤트를 등록한다.
-            googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-                @Override
-                public void onMapClick(LatLng latLng) {
-                    MarkerOptions markerOptions = new MarkerOptions();
-                    markerOptions.position(latLng);
-                    markerOptions.title("클릭한 장소 ");
-                    markerOptions.snippet("위도:" + latLng.latitude + ", 경도: " + latLng.longitude);
-                    googleMap.addMarker(markerOptions).showInfoWindow();
-                }
-            });
-
-            //snippet 클릭시 마커삭제
-            googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
-                @Override
-                public void onInfoWindowClick(Marker marker) {
-                    marker.remove();
-                }
-            });
 
         }
     };
