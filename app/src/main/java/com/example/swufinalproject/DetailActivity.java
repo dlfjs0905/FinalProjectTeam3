@@ -116,10 +116,14 @@ public class DetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(DetailActivity.this);
+                if (TextUtils.equals(mBoardBean.full, "full")) {
+                    Toast.makeText(DetailActivity.this, "모집이 완료된 글입니다.", Toast.LENGTH_SHORT).show();
+                    return;
+                } else {
+                    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(DetailActivity.this);
 
-                dialogBuilder.setTitle("참여하기");
-                dialogBuilder.setMessage("\n얼마를 주문하겠습니까?");
+                    dialogBuilder.setTitle("참여하기");
+                    dialogBuilder.setMessage("\n얼마를 주문하겠습니까?(참여 후에는 수정이 불가능하니, 신중하게 입력해주세요.)");
 
                 final EditText et = new EditText(DetailActivity.this);
                 dialogBuilder.setView(et);
@@ -137,29 +141,29 @@ public class DetailActivity extends AppCompatActivity {
                         String value = et.getText().toString();         //입력창 생성
                         String value_n = et.getText().toString();
 
-                        if (value_n.matches("")) {
-                            Toast.makeText(getBaseContext(), "값을 입력하세요", Toast.LENGTH_SHORT).show();
+                            if (value_n.matches("")) {
+                                Toast.makeText(getBaseContext(), "값을 입력하세요", Toast.LENGTH_SHORT).show();
 
-                        } else {
+                            } else {
 
-                            dbIntprice = Integer.parseInt(mBoardBean.totalprice);    //DB에 Strng으로 저장된 가격을 int형으로 바꿔서 dbintprice에 저장
-                            curIntprice = Integer.parseInt(value);                  //사용자가 입력한 금액도 int로 바궈준다.
+                                dbIntprice = Integer.parseInt(mBoardBean.totalprice);    //DB에 Strng으로 저장된 가격을 int형으로 바꿔서 dbintprice에 저장
+                                curIntprice = Integer.parseInt(value);                  //사용자가 입력한 금액도 int로 바궈준다.
 
-                            dbIntprice = dbIntprice + curIntprice;                  //두 int의 값을 더해서 최종 합 price를 정한다.
+                                dbIntprice = dbIntprice + curIntprice;                  //두 int의 값을 더해서 최종 합 price를 정한다.
 
 
-                            mBoardBean.myprice = String.valueOf(value);
-                            dbStringprice = String.valueOf(dbIntprice);            //다시 db에 넣기 위해 string으로 변환
-                            mBoardBean.totalprice = dbStringprice;                      //db price값을 수정한다.
-                            mFirebaseDatabase.getReference().child(mBoardBean.id).setValue(mBoardBean);         //firebase에 최종 올려준다.
+                                mBoardBean.myprice = String.valueOf(value);
+                                dbStringprice = String.valueOf(dbIntprice);            //다시 db에 넣기 위해 string으로 변환
+                                mBoardBean.totalprice = dbStringprice;                      //db price값을 수정한다.
+                                mFirebaseDatabase.getReference().child(mBoardBean.id).setValue(mBoardBean);         //firebase에 최종 올려준다.
 
-                            //이제 카카오톡 오픈채팅 비밀번호 알려주는 다이얼로그 하나 밑에 띄운다.
+                                //이제 카카오톡 오픈채팅 비밀번호 알려주는 다이얼로그 하나 밑에 띄운다.
 
-                            if (!(TextUtils.equals(mBoardBean.kakaopwd, ""))) {          //값이 있으면
-                                AlertDialog.Builder dialogBuilder2 = new AlertDialog.Builder(DetailActivity.this);
-                                dialogBuilder2.setTitle("카카오톡 오픈 채팅 비밀번호");
-                                String alertpwd = mBoardBean.kakaopwd;
-                                dialogBuilder2.setMessage("비밀번호 : " + alertpwd + "\n\n * 비밀번호는 한 번만 알려드립니다.");
+                                if (!(TextUtils.equals(mBoardBean.kakaopwd, ""))) {          //값이 있으면
+                                    AlertDialog.Builder dialogBuilder2 = new AlertDialog.Builder(DetailActivity.this);
+                                    dialogBuilder2.setTitle("카카오톡 오픈 채팅 비밀번호");
+                                    String alertpwd = mBoardBean.kakaopwd;
+                                    dialogBuilder2.setMessage("비밀번호 : " + alertpwd + "\n\n * 비밀번호는 한 번만 알려드립니다.");
 
 
                                 dialogBuilder2.setPositiveButton("확인", new DialogInterface.OnClickListener() {
