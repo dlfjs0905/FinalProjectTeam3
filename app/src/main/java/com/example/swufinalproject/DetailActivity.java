@@ -54,6 +54,7 @@ public class DetailActivity extends AppCompatActivity {
     private int dbIntprice, curIntprice;
     private String dbStringprice, key;
 
+    public int index; //주문 접수 마감
 
 
     @Override
@@ -76,8 +77,11 @@ public class DetailActivity extends AppCompatActivity {
         ImageButton btnkakaolink =findViewById(R.id.btnkakaolink);
 
         if(TextUtils.equals(mBoardBean.writerId, mFirebaseAuth.getCurrentUser().getEmail())){
+            //주문 완료
+            //작성자
             btnJoin.setVisibility(View.INVISIBLE);
             btnCommit.setVisibility(View.VISIBLE);
+
         }else{
             btnJoin.setVisibility(View.VISIBLE);
             btnCommit.setVisibility(View.INVISIBLE);
@@ -168,7 +172,25 @@ public class DetailActivity extends AppCompatActivity {
         btnCommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    Toast.makeText(DetailActivity.this, "완료된 주문입니다.", Toast.LENGTH_LONG).show();
+
+                AlertDialog.Builder dialogBuilder3 = new AlertDialog.Builder(DetailActivity.this);
+                dialogBuilder3.setTitle("주문을 마감하시겠습니까?");
+                index = 1;
+                dialogBuilder3.setMessage("더 이상 참여자가 참여할 수 없습니다.");
+
+                dialogBuilder3.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        index = 1;
+                    }
+                });
+                dialogBuilder3.setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        index = 0;
+                    }
+                });
+                dialogBuilder3.show();
+
+
             }
         });
 
@@ -180,7 +202,6 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
     }
-
 
     @Override
     protected void onResume() {
