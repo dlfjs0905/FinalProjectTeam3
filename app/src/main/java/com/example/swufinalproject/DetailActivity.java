@@ -11,6 +11,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
@@ -54,7 +55,7 @@ public class DetailActivity extends AppCompatActivity {
     private int dbIntprice, curIntprice;
     private String dbStringprice, key;
 
-    public int index; //주문 접수 마감
+    //public int index; //주문 접수 마감
 
 
     @Override
@@ -187,17 +188,26 @@ public class DetailActivity extends AppCompatActivity {
 
                 AlertDialog.Builder dialogBuilder3 = new AlertDialog.Builder(DetailActivity.this);
                 dialogBuilder3.setTitle("주문을 마감하시겠습니까?");
-                index = 1;
-                dialogBuilder3.setMessage("더 이상 참여자가 참여할 수 없습니다.");
-
+                dialogBuilder3.setMessage("더 이상 다른 사람이 참여할 수 없습니다.");
                 dialogBuilder3.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        index = 1;
+                        mBoardBean.full = "full";
+                        mFirebaseDatabase.getReference().child(mBoardBean.id).setValue(mBoardBean);         //firebase에 최종 올려준다.
+                        Toast.makeText(DetailActivity.this, "모집이 마감되었습니다.", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                finish();
+                            }
+                        }, 800);//딜레이를 준 후 시작
                     }
                 });
                 dialogBuilder3.setNegativeButton("취소", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
-                        index = 0;
+                        mBoardBean.full = "unfull";
+                        mFirebaseDatabase.getReference().child(mBoardBean.id).setValue(mBoardBean);         //firebase에 최종 올려준다.
                     }
                 });
                 dialogBuilder3.show();
