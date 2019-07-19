@@ -127,17 +127,15 @@ public class DetailActivity extends AppCompatActivity {
                 dialogBuilder.setPositiveButton("참여", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
 
-                        String value = et.getText().toString();         //입력창 생성
-                        String value_n = et.getText().toString();
-
                         DatabaseReference dbRef = mFirebaseDatabase.getReference();
                         String id = dbRef.push().getKey();
 
-                        key = "true";
-                        mBoardBean.key = key;
-
+                        String iwanttojoin = mFirebaseAuth.getCurrentUser().getEmail();
+                        mBoardBean.getUserList().add(iwanttojoin);
                         dbRef.child(mBoardBean.id).setValue(mBoardBean);
 
+                        String value = et.getText().toString();         //입력창 생성
+                        String value_n = et.getText().toString();
 
                         if (value_n.matches("")) {
                             Toast.makeText(getBaseContext(), "값을 입력하세요", Toast.LENGTH_SHORT).show();

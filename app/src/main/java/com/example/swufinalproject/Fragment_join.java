@@ -30,6 +30,7 @@ public class Fragment_join extends Fragment {
     private ListView mListView_Join;
     private List<BoardBean> mJoinList = new ArrayList<>();
     private JoinAdapter mJoinAdapter;
+    private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
 
     @Nullable
     @Override
@@ -53,12 +54,11 @@ public class Fragment_join extends Fragment {
 
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     BoardBean bean = snapshot.getValue(BoardBean.class);
-                    //*****************
-                    if (bean.myprice == null) {
-                        bean.key = "false";
-                    } else if(TextUtils.equals(bean.key , "true")  ) {
+
+                    if(bean.getUserList().contains(mFirebaseAuth.getCurrentUser().getEmail())){
                         mJoinList.add(0, bean);
                     }
+
                 }
                 //바뀐 데이터로 Refresh 한다.
                 if(mJoinAdapter != null) {

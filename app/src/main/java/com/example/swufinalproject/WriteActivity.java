@@ -56,7 +56,6 @@ public class WriteActivity extends AppCompatActivity {
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
     private FirebaseStorage mFirebaseStorage = FirebaseStorage.getInstance(STORAGE_DB_URL);
     private FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
-    public String key;
 
     //google map
     private SupportMapFragment mMapFragment;
@@ -243,10 +242,8 @@ public class WriteActivity extends AppCompatActivity {
                 boardBean.kakaopwd = txtedtpwd;
                 boardBean.full="unfull";
 
-                //내가 쓴 글도 참여내역에 뜨도록
-                key = "true";
-                boardBean.key = key;
-
+                String iwanttojoin = mFirebaseAuth.getCurrentUser().getEmail();
+                boardBean.getUserList().add(iwanttojoin);
 
                 dbRef.child(boardBean.id).setValue(boardBean);
 

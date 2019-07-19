@@ -3,11 +3,14 @@ package com.example.swufinalproject;
 import android.widget.EditText;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BoardBean implements Serializable {
 
     public String id;
     public String writerId;
+    public String joinId;
     public String full;
     public String food;
     public String starttime;
@@ -18,8 +21,19 @@ public class BoardBean implements Serializable {
     public String choice_foodWrite;
     public String choice_location;
     public String memo;
-    public String key;
     public String kakaolink;
     public String kakaopwd;
 
+    private List<String> userList;
+
+    public List<String> getUserList() {
+        if(userList == null) {
+            userList = new ArrayList<>();
+        }
+        return userList;
+    }
+
+    public void setUserList(List<String> userList) {
+        this.userList = userList;
+    }
 }
