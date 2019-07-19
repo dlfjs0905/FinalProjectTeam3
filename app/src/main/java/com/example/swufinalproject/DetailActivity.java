@@ -209,7 +209,6 @@ public class DetailActivity extends AppCompatActivity {
             imgBar.setImageResource(R.drawable.bar_100per);
         }
 
-
     }
 
     private LocationListener locationListener = new LocationListener() {
