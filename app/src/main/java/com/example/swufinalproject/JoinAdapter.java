@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -50,6 +51,7 @@ public class JoinAdapter extends BaseAdapter {
         TextView myJoinPrice = view.findViewById(R.id.myJojnPrice);
         TextView foodName = view.findViewById(R.id.foodName);
         ImageView imgBar = view.findViewById(R.id.imgBar);
+        FrameLayout index = view.findViewById(R.id.index2);
 
         final BoardBean boardBean2 = mJoinList.get(i);
 
@@ -89,6 +91,10 @@ public class JoinAdapter extends BaseAdapter {
                 mContextJoin.startActivity(intent);
             }
         });
+
+        if (boardBean2.full == "full") {
+            index.setVisibility(View.VISIBLE);
+        }
 
         return view;
     }

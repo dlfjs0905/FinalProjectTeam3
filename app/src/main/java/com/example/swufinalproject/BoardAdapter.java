@@ -63,6 +63,7 @@ public class BoardAdapter extends BaseAdapter {
         TextView txtPrice = view.findViewById(R.id.txtPrice);
         ImageView imgFood = view.findViewById(R.id.imgFood);
         ImageView imgBar = view.findViewById(R.id.imgBar);
+        FrameLayout index = view.findViewById(R.id.index);
 
         final BoardBean boardBean = mBoardList.get(i);
 
@@ -115,6 +116,10 @@ public class BoardAdapter extends BaseAdapter {
                 mContext.startActivity(intent);
             }
         });
+
+        if (boardBean.full == "full") {
+            index.setVisibility(View.VISIBLE);
+        }
 
         return view;
     }

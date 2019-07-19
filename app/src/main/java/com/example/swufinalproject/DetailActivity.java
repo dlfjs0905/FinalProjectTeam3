@@ -11,6 +11,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.view.View;
@@ -180,7 +181,15 @@ public class DetailActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         mBoardBean.full = "full";
                         mFirebaseDatabase.getReference().child(mBoardBean.id).setValue(mBoardBean);         //firebase에 최종 올려준다.
-
+                        Toast.makeText(DetailActivity.this, "모집이 마감되었습니다.", Toast.LENGTH_SHORT).show();
+                        new Handler().postDelayed(new Runnable()
+                        {
+                            @Override
+                            public void run()
+                            {
+                                finish();
+                            }
+                        }, 800);//딜레이를 준 후 시작
                     }
                 });
                 dialogBuilder3.setNegativeButton("취소", new DialogInterface.OnClickListener() {
