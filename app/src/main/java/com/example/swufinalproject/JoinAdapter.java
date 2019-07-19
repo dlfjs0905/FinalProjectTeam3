@@ -2,10 +2,12 @@ package com.example.swufinalproject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -50,6 +52,7 @@ public class JoinAdapter extends BaseAdapter {
         TextView myJoinPrice = view.findViewById(R.id.myJojnPrice);
         TextView foodName = view.findViewById(R.id.foodName);
         ImageView imgBar = view.findViewById(R.id.imgBar);
+        FrameLayout index = view.findViewById(R.id.index2);
 
         final BoardBean boardBean2 = mJoinList.get(i);
 
@@ -73,6 +76,10 @@ public class JoinAdapter extends BaseAdapter {
             imgBar.setImageResource(R.drawable.bar_80per);
         } else if (mWriterPrice >= (mPrice * 5)){
             imgBar.setImageResource(R.drawable.bar_100per);
+        }
+
+        if (TextUtils.equals(boardBean2.full,"full")) {
+            index.setVisibility(View.VISIBLE);
         }
 
         view.setOnClickListener(new View.OnClickListener() {

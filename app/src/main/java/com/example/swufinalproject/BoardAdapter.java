@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,6 +64,7 @@ public class BoardAdapter extends BaseAdapter {
         TextView txtPrice = view.findViewById(R.id.txtPrice);
         ImageView imgFood = view.findViewById(R.id.imgFood);
         ImageView imgBar = view.findViewById(R.id.imgBar);
+        FrameLayout index = view.findViewById(R.id.index);
 
         final BoardBean boardBean = mBoardList.get(i);
 
@@ -98,6 +100,10 @@ public class BoardAdapter extends BaseAdapter {
             imgBar.setImageResource(R.drawable.bar_80per);
         } else if (mWriterPrice >= (mPrice * 5)){
             imgBar.setImageResource(R.drawable.bar_100per);
+        }
+
+        if (TextUtils.equals(boardBean.full,"full")) {
+            index.setVisibility(View.VISIBLE);
         }
 
         view.setOnClickListener(new View.OnClickListener() {
