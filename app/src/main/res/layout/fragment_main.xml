@@ -114,11 +114,12 @@
 
         <ImageButton
             android:id="@+id/btnWrite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
+            android:layout_width="65dp"
+            android:layout_height="63dp"
             android:layout_gravity="bottom|right"
+            android:layout_marginRight="10dp"
             android:backgroundTint="#00FFFFFF"
+            android:scaleType="fitXY"
             android:src="@drawable/plus" />
     </FrameLayout>
 
