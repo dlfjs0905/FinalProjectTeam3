@@ -65,7 +65,7 @@ public class Fragment_join extends Fragment {
                         } if (TextUtils.equals(bean.full, "full")) {
                             mJoinList2.add(0, bean);
                         }
-                    mJoinList.addAll(mJoinList2);*/
+                        mJoinList.addAll(mJoinList2);*/
                     }
                 }
                 //바뀐 데이터로 Refresh 한다.

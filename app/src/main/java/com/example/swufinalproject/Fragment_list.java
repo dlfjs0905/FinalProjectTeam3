@@ -62,7 +62,6 @@ public class Fragment_list extends Fragment {
 
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     BoardBean bean = snapshot.getValue(BoardBean.class);
-
                     if (TextUtils.equals(bean.full, "unfull")) {
                         mBoardList.add(0, bean);
                     } if (TextUtils.equals(bean.full, "full")) {

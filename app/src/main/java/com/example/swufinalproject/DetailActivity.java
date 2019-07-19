@@ -190,13 +190,13 @@ public class DetailActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 AlertDialog.Builder dialogBuilder3 = new AlertDialog.Builder(DetailActivity.this);
-                dialogBuilder3.setTitle("주문을 마감하시겠습니까?");
+                dialogBuilder3.setTitle("모집을 마감하시겠습니까?");
                 dialogBuilder3.setMessage("더 이상 다른 사람이 참여할 수 없습니다.");
                 dialogBuilder3.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         mBoardBean.full = "full";
                         mFirebaseDatabase.getReference().child(mBoardBean.id).setValue(mBoardBean);         //firebase에 최종 올려준다.
-                        Toast.makeText(DetailActivity.this, "모집이 마감되었습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(DetailActivity.this, "모집이 정상적으로 마감되었습니다.", Toast.LENGTH_SHORT).show();
                         new Handler().postDelayed(new Runnable()
                         {
                             @Override
