@@ -103,7 +103,7 @@ public class DetailActivity extends AppCompatActivity {
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(DetailActivity.this);
 
                 dialogBuilder.setTitle("참여하기");
-                dialogBuilder.setMessage("얼마를 주문하겠습니까?");
+                dialogBuilder.setMessage("\n얼마를 주문하겠습니까?");
 
                 final EditText et = new EditText(DetailActivity.this);
                 dialogBuilder.setView(et);
@@ -137,7 +137,7 @@ public class DetailActivity extends AppCompatActivity {
                         AlertDialog.Builder dialogBuilder2 = new AlertDialog.Builder(DetailActivity.this);
                         dialogBuilder2.setTitle("카카오톡 오픈 채팅 비밀번호");
                         String alertpwd = mBoardBean.kakaopwd;
-                        dialogBuilder2.setMessage("                비밀번호 : "+alertpwd);
+                        dialogBuilder2.setMessage("비밀번호 : " + alertpwd + "\n\n * 비밀번호는 한 번만 알려드립니다.");
 
 
                         dialogBuilder2.setPositiveButton("확인", new DialogInterface.OnClickListener() {

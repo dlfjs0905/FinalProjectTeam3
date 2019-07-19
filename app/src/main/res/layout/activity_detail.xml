@@ -241,15 +241,27 @@
 
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/btnJoin"
-                    android:layout_width="140dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/redbutton"
-                    android:text="참여하기"
-                    android:textColor="@color/common_google_signin_btn_text_dark_default" />
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal">
+                    <Button
+                        android:id="@+id/btnJoin"
+                        android:layout_width="140dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/redbutton"
+                        android:text="참여하기"
+                        android:visibility="visible"
+                        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+                    <ImageButton
+                        android:id="@+id/btnCommit"
+                        android:layout_width="140dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:visibility="invisible"
+                        android:background="@drawable/commit" />
+                </FrameLayout>
 
             </LinearLayout>
 
