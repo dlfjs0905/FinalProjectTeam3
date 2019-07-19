@@ -120,9 +120,11 @@ public class DetailActivity extends AppCompatActivity {
 
                 dialogBuilder.setTitle("참여하기");
                 dialogBuilder.setMessage("\n얼마를 주문하겠습니까?");
-
-                final EditText et = new EditText(DetailActivity.this);
                 dialogBuilder.setView(et);
+                //dialogBuilder.setView(R.layout.view_join_dlg1 );
+                //AlertDialog alertDialog = dialogBuilder.create();
+                //alertDialog.findViewById(R.id.)
+                //alertDialog.show();
 
                 dialogBuilder.setPositiveButton("참여", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {

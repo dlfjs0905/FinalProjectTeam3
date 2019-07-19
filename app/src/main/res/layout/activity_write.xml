@@ -176,7 +176,8 @@
                             android:gravity="center"
                             android:layout_marginTop="4dp"
                             android:hint="예) 20000"
-                            android:inputType="textPersonName"
+                            android:inputType="number"
+                            android:digits="0123456789"
                             android:textAlignment="center"
                             android:textColor="#998C8E"
                             android:textSize="20sp" />
@@ -230,7 +231,8 @@
                             android:layout_marginTop="4dp"
                             android:gravity="center"
                             android:hint="예) 5000"
-                            android:inputType="textPersonName"
+                            android:inputType="number"
+                            android:digits="0123456789"
                             android:textAlignment="center"
                             android:textColor="#998C8E"
                             android:textSize="20sp" />
