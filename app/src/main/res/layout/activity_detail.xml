@@ -141,12 +141,16 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="장소"
                     android:textAlignment="center" />
 
                 <fragment
                     android:id="@+id/map"
                     class="com.google.android.gms.maps.SupportMapFragment"
                     android:layout_width="300dp"
+                    android:layout_marginTop="10dp"
                     android:layout_height="200dp"
                     android:layout_gravity="center_horizontal" />
 
@@ -247,6 +251,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:textAlignment="center"
+                    android:gravity="center_horizontal"
                     android:background="@drawable/box" />
 
                 <LinearLayout
