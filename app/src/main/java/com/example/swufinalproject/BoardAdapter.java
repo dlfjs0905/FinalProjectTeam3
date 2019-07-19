@@ -28,6 +28,7 @@ public class BoardAdapter extends BaseAdapter {
     private List<BoardBean> mBoardList;
     private int mPrice;
     private int mWriterPrice;
+    private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
 
     public BoardAdapter(Context context, List<BoardBean> boardList) {
         mContext = context;
@@ -65,6 +66,7 @@ public class BoardAdapter extends BaseAdapter {
         ImageView imgFood = view.findViewById(R.id.imgFood);
         ImageView imgBar = view.findViewById(R.id.imgBar);
         FrameLayout index = view.findViewById(R.id.index);
+        FrameLayout mine = view.findViewById(R.id.mine);
 
         final BoardBean boardBean = mBoardList.get(i);
 
@@ -104,6 +106,12 @@ public class BoardAdapter extends BaseAdapter {
 
         if (TextUtils.equals(boardBean.full,"full")) {
             index.setVisibility(View.VISIBLE);
+        }
+
+        if(TextUtils.equals(boardBean.writerId, mFirebaseAuth.getCurrentUser().getEmail())){
+            mine.setVisibility(View.VISIBLE);
+        }else{
+            mine.setVisibility(View.INVISIBLE);
         }
 
         view.setOnClickListener(new View.OnClickListener() {

@@ -11,6 +11,8 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.List;
 
 public class JoinAdapter extends BaseAdapter {
@@ -20,6 +22,7 @@ public class JoinAdapter extends BaseAdapter {
 
     private Context mContextJoin;
     private List<BoardBean> mJoinList;
+    private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
 
 
     public JoinAdapter(Context context, List<BoardBean> joinList) {
@@ -53,6 +56,7 @@ public class JoinAdapter extends BaseAdapter {
         TextView foodName = view.findViewById(R.id.foodName);
         ImageView imgBar = view.findViewById(R.id.imgBar);
         FrameLayout index = view.findViewById(R.id.index2);
+        FrameLayout mine = view.findViewById(R.id.mine);
 
         final BoardBean boardBean2 = mJoinList.get(i);
 
@@ -80,6 +84,12 @@ public class JoinAdapter extends BaseAdapter {
 
         if (TextUtils.equals(boardBean2.full,"full")) {
             index.setVisibility(View.VISIBLE);
+        }
+
+        if(TextUtils.equals(boardBean2.writerId, mFirebaseAuth.getCurrentUser().getEmail())){
+            mine.setVisibility(View.VISIBLE);
+        }else{
+            mine.setVisibility(View.INVISIBLE);
         }
 
         view.setOnClickListener(new View.OnClickListener() {
