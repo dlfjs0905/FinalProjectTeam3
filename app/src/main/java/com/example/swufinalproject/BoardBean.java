@@ -17,5 +17,7 @@ public class BoardBean implements Serializable {
     public String choice_location;
     public String memo;
     public String key;
+    public String kakaolink;
+    public String kakaopwd;
 
 }

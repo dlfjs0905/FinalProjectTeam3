@@ -133,7 +133,9 @@ public class DetailActivity extends AppCompatActivity {
 
                         AlertDialog.Builder dialogBuilder2 = new AlertDialog.Builder(DetailActivity.this);
                         dialogBuilder2.setTitle("카카오톡 오픈 채팅 비밀번호");
-                        dialogBuilder2.setMessage("비밀번호 : 0000");
+                        String alertpwd = mBoardBean.kakaopwd;
+                        dialogBuilder2.setMessage("                비밀번호 : "+alertpwd);
+
 
                         dialogBuilder2.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int whichButton) {
