@@ -190,8 +190,6 @@ public class DetailActivity extends AppCompatActivity {
                     }
                 });
                 dialogBuilder3.show();
-
-
             }
         });
 
