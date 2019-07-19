@@ -46,6 +46,7 @@ import com.google.firebase.storage.UploadTask;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
+import java.util.zip.Inflater;
 
 public class WriteActivity extends AppCompatActivity {
 
@@ -67,6 +68,7 @@ public class WriteActivity extends AppCompatActivity {
     String choice_location = "";
     String choice_startTime = "";
     String choice_endTime = "";
+    private int intPrice;
 
     TextView txtTime, txtLocation;
     private BoardBean mBoardBean;
@@ -81,7 +83,6 @@ public class WriteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
-
 
 
         final Spinner spinnerFoodWrite = findViewById(R.id.spinnerFoodWrite);
@@ -185,7 +186,7 @@ public class WriteActivity extends AppCompatActivity {
         //WIFI 위치를 0.1초마다 10m 간격범위안에서 이동하면 위치를 listener 로 보내주도록 등록한다.
         mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 10, locationListener);
 
-
+        //intPrice = Integer.parseInt(txtwriterPrice) + Integer.parseInt(txtPrice);
 
         //글쓰기 완료 버튼 누르면 DB 저장
         ImageButton btnComplete = (ImageButton) findViewById(R.id.btnComplete);
@@ -213,8 +214,6 @@ public class WriteActivity extends AppCompatActivity {
                 boardBean.choice_foodWrite = choice_foodWrite;
                 boardBean.choice_location = choice_location;
                 boardBean.memo = txtMemo;
-
-                //dsafdafsaf
 
                 //내가 쓴 글도 참여내역에 뜨도록
                 key = "true";

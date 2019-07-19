@@ -88,13 +88,13 @@ public class BoardAdapter extends BaseAdapter {
 
 
         //바 이미지 변경
-        if (mWriterPrice <= mPrice){
+        if (mWriterPrice < mPrice){
             imgBar.setImageResource(R.drawable.bar_20per);
-        } else if (((mPrice * 2) < mWriterPrice) && (mWriterPrice <= (mPrice * 3))){
+        } else if (((mPrice * 2) <= mWriterPrice) && (mWriterPrice < (mPrice * 3))){
             imgBar.setImageResource(R.drawable.bar_40per);
-        } else if (((mPrice * 3) < mWriterPrice) && (mWriterPrice <= (mPrice * 4))){ //
+        } else if (((mPrice * 3) <= mWriterPrice) && (mWriterPrice < (mPrice * 4))){ //
             imgBar.setImageResource(R.drawable.bar_60per);
-        } else if (((mPrice* 4) < mWriterPrice) && (mWriterPrice < (mPrice * 5))){
+        } else if (((mPrice* 4) <= mWriterPrice) && (mWriterPrice < (mPrice * 5))){
             imgBar.setImageResource(R.drawable.bar_80per);
         } else if (mWriterPrice >= (mPrice * 5)){
             imgBar.setImageResource(R.drawable.bar_100per);
