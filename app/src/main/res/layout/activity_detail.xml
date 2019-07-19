@@ -177,9 +177,9 @@
                     android:id="@+id/map"
                     class="com.google.android.gms.maps.SupportMapFragment"
                     android:layout_width="300dp"
-                    android:layout_marginTop="10dp"
                     android:layout_height="200dp"
-                    android:layout_gravity="center_horizontal" />
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp" />
 
             </LinearLayout>
 
