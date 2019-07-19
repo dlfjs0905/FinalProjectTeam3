@@ -176,7 +176,7 @@ public class DetailActivity extends AppCompatActivity {
 
                 AlertDialog.Builder dialogBuilder3 = new AlertDialog.Builder(DetailActivity.this);
                 dialogBuilder3.setTitle("주문을 마감하시겠습니까?");
-                dialogBuilder3.setMessage("더 이상 참여자가 참여할 수 없습니다.");
+                dialogBuilder3.setMessage("더 이상 다른 사람이 참여할 수 없습니다.");
                 dialogBuilder3.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         mBoardBean.full = "full";
