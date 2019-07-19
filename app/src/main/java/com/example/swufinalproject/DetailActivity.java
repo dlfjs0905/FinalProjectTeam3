@@ -186,7 +186,7 @@ public class DetailActivity extends AppCompatActivity {
 
 
         //바 이미지 변경
-        if (mWriterPrice <= mPrice && (mWriterPrice < (mPrice * 2))){
+        if ((mPrice <= mWriterPrice) && (mWriterPrice < (mPrice * 2))){
             imgBar.setImageResource(R.drawable.bar_20per);
         } else if (((mPrice * 2) <= mWriterPrice) && (mWriterPrice < (mPrice * 3))){
             imgBar.setImageResource(R.drawable.bar_40per);
