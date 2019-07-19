@@ -206,8 +206,8 @@ public class WriteActivity extends AppCompatActivity {
                 boardBean.id = id;
                 boardBean.food = txtFoodWrite;
                 boardBean.price = txtPrice;
-                boardBean.totalprice = txtwriterPrice;
                 boardBean.myprice = txtwriterPrice;
+                boardBean.totalprice = txtwriterPrice;
                 boardBean.starttime = choice_startTime;
                 boardBean.endtime = choice_endTime;
                 boardBean.choice_foodWrite = choice_foodWrite;
