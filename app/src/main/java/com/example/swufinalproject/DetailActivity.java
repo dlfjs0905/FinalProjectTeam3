@@ -183,6 +183,7 @@ public class DetailActivity extends AppCompatActivity {
         TextView locationDetail = findViewById(R.id.locationDetail);
         TextView memoDetail = findViewById(R.id.memoDetail);
         ImageView imgBar = findViewById(R.id.imgBar);
+        TextView writeFoodSpinner = findViewById(R.id.writeFoodSpinner);
 
         writeFoodDetail.setText(mBoardBean.food);
         startTimeDetail.setText(mBoardBean.starttime);
@@ -191,6 +192,7 @@ public class DetailActivity extends AppCompatActivity {
         memoDetail.setText(mBoardBean.memo);
         lowestPrice.setText("목표 금액 : " + mBoardBean.price + "원");
         totalPrice.setText("현재 금액 : " + mBoardBean.totalprice + "원");
+        writeFoodSpinner.setText(mBoardBean.choice_foodWrite);
 
         mWriterPrice = (Integer.parseInt(mBoardBean.totalprice)); //현재 참여 금액 int로 변경
         mPrice = (Integer.parseInt(mBoardBean.price)/5); //최소 금액 int로 변경
