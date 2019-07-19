@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="#FFFFFF"
     android:layout_height="match_parent"
     tools:context=".WriteActivity"
     android:orientation="vertical">
@@ -375,7 +376,8 @@
                             android:hint="링크를 넣어주세요."
                             android:inputType="textPersonName"
                             android:paddingLeft="10dp"
-                            android:textColor="#998C8E" />
+                            android:textColor="#998C8E"
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -406,7 +408,8 @@
                             android:hint="비밀번호를 입력해주세요."
                             android:inputType="textPassword"
                             android:paddingLeft="10dp"
-                            android:textColor="#998C8E" />
+                            android:textColor="#998C8E"
+                            android:textSize="14sp" />
 
                     </LinearLayout>
 
