@@ -73,10 +73,8 @@ public class WriteActivity extends AppCompatActivity {
     TextView txtTime, txtLocation;
     private BoardBean mBoardBean;
 
-    EditText edtFoodWrite;
-    EditText edtPrice, writerPrice;
-    EditText edtMemo;
-    String txtFoodWrite, txtPrice, txtMemo, txtwriterPrice;
+    EditText edtFoodWrite,edtMemo, edtPrice, writerPrice, edtlink, edtpwd;
+    String txtFoodWrite, txtPrice, txtMemo, txtwriterPrice, txtedtlink, txtedtpwd;
 
 
     @Override
@@ -95,6 +93,8 @@ public class WriteActivity extends AppCompatActivity {
         writerPrice = findViewById(R.id.writerPrice);
         edtPrice = findViewById(R.id.edtPrice);
         edtMemo = findViewById(R.id.edtMemo);
+        edtlink = findViewById(R.id.edtlink);
+        edtpwd = findViewById(R.id.edtpwd);
 
         //음식 선택 스피너
         ArrayAdapter<CharSequence> adapterFoodWrite = ArrayAdapter.createFromResource(this, R.array.spinner_food, android.R.layout.simple_spinner_dropdown_item);
@@ -201,7 +201,8 @@ public class WriteActivity extends AppCompatActivity {
                 txtPrice = edtPrice.getText().toString();
                 txtwriterPrice = writerPrice.getText().toString();
                 txtMemo = edtMemo.getText().toString();
-
+                txtedtlink = edtlink.getText().toString();
+                txtedtpwd = edtpwd.getText().toString();
 
                 BoardBean boardBean = new BoardBean();
                 boardBean.id = id;
@@ -214,6 +215,8 @@ public class WriteActivity extends AppCompatActivity {
                 boardBean.choice_foodWrite = choice_foodWrite;
                 boardBean.choice_location = choice_location;
                 boardBean.memo = txtMemo;
+                boardBean.kakaolink = txtedtlink;
+                boardBean.kakaopwd = txtedtpwd;
 
                 //내가 쓴 글도 참여내역에 뜨도록
                 key = "true";
