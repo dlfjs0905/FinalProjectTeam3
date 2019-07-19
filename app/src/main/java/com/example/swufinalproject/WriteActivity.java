@@ -200,7 +200,8 @@ public class WriteActivity extends AppCompatActivity {
                 txtPrice = edtPrice.getText().toString();
                 txtwriterPrice = writerPrice.getText().toString();
                 txtMemo = edtMemo.getText().toString();
-
+                txtedtlink = edtlink.getText().toString();
+                txtedtpwd = edtpwd.getText().toString();
 
                 BoardBean boardBean = new BoardBean();
                 boardBean.id = id;
