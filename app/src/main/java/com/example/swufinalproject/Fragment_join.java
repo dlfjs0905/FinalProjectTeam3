@@ -1,5 +1,7 @@
 package com.example.swufinalproject;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -69,6 +71,7 @@ public class Fragment_join extends Fragment {
 
             }
         });
+
 
         return view;
     }
