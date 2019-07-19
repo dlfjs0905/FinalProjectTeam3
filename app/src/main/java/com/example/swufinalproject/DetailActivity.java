@@ -181,7 +181,7 @@ public class DetailActivity extends AppCompatActivity {
                     }
                 });
                 dialogBuilder.show();
-            }
+            }}
         });
 
         btnCommit.setOnClickListener(new View.OnClickListener() {

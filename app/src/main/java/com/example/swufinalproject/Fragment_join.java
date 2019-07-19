@@ -29,6 +29,7 @@ public class Fragment_join extends Fragment {
     private FirebaseDatabase mFirebaseDB = FirebaseDatabase.getInstance();
     private ListView mListView_Join;
     private List<BoardBean> mJoinList = new ArrayList<>();
+    private List<BoardBean> mJoinList2 = new ArrayList<>();
     private JoinAdapter mJoinAdapter;
     private FirebaseAuth mFirebaseAuth = FirebaseAuth.getInstance();
 
@@ -43,6 +44,7 @@ public class Fragment_join extends Fragment {
 
         //최초 데이터 셋팅
         mJoinAdapter = new JoinAdapter(getContext(), mJoinList);
+        mJoinAdapter = new JoinAdapter(getContext(), mJoinList2);
         mListView_Join.setAdapter(mJoinAdapter);
 
         //데이터 취득
@@ -51,6 +53,7 @@ public class Fragment_join extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //데이터를 받아와서 List에 저장.
                 mJoinList.clear();
+                mJoinList2.clear();
 
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     BoardBean bean = snapshot.getValue(BoardBean.class);
@@ -58,7 +61,6 @@ public class Fragment_join extends Fragment {
                     if(bean.getUserList().contains(mFirebaseAuth.getCurrentUser().getEmail())){
                         mJoinList.add(0, bean);
                     }
-
                 }
                 //바뀐 데이터로 Refresh 한다.
                 if(mJoinAdapter != null) {
