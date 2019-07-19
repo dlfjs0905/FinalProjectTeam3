@@ -110,9 +110,11 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
+
         btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(DetailActivity.this);
 
                 dialogBuilder.setTitle("참여하기");
@@ -121,10 +123,11 @@ public class DetailActivity extends AppCompatActivity {
                 final EditText et = new EditText(DetailActivity.this);
                 dialogBuilder.setView(et);
 
-
                 dialogBuilder.setPositiveButton("참여", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
 
+                        String value = et.getText().toString();         //입력창 생성
+                        String value_n = et.getText().toString();
 
                         DatabaseReference dbRef = mFirebaseDatabase.getReference();
                         String id = dbRef.push().getKey();
@@ -134,17 +137,16 @@ public class DetailActivity extends AppCompatActivity {
 
                         dbRef.child(mBoardBean.id).setValue(mBoardBean);
 
-                        String value = et.getText().toString();         //입력창 생성
 
-                        String value_n = et.getText().toString();
-                        if (value_n.matches("")){
-                            Toast.makeText(getApplicationContext(), "값을 입력하세요", Toast.LENGTH_SHORT).show();
-                            return;
-                        }else{
+                        if (value_n.matches("")) {
+                            Toast.makeText(getBaseContext(), "값을 입력하세요", Toast.LENGTH_SHORT).show();
+
+                        } else {
+
                             dbIntprice = Integer.parseInt(mBoardBean.totalprice);    //DB에 Strng으로 저장된 가격을 int형으로 바꿔서 dbintprice에 저장
                             curIntprice = Integer.parseInt(value);                  //사용자가 입력한 금액도 int로 바궈준다.
 
-                            dbIntprice=dbIntprice+curIntprice;                  //두 int의 값을 더해서 최종 합 price를 정한다.
+                            dbIntprice = dbIntprice + curIntprice;                  //두 int의 값을 더해서 최종 합 price를 정한다.
 
 
                             mBoardBean.myprice = String.valueOf(value);
@@ -154,7 +156,7 @@ public class DetailActivity extends AppCompatActivity {
 
                             //이제 카카오톡 오픈채팅 비밀번호 알려주는 다이얼로그 하나 밑에 띄운다.
 
-                            if(!(TextUtils.equals(mBoardBean.kakaopwd, ""))){          //값이 있으면
+                            if (!(TextUtils.equals(mBoardBean.kakaopwd, ""))) {          //값이 있으면
                                 AlertDialog.Builder dialogBuilder2 = new AlertDialog.Builder(DetailActivity.this);
                                 dialogBuilder2.setTitle("카카오톡 오픈 채팅 비밀번호");
                                 String alertpwd = mBoardBean.kakaopwd;
@@ -172,7 +174,8 @@ public class DetailActivity extends AppCompatActivity {
 
                     }
                 }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {  }
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                    }
                 });
                 dialogBuilder.show();
             }
