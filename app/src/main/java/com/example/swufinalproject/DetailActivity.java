@@ -61,6 +61,8 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        final EditText et = new EditText(this);
+
         mBoardBean = (BoardBean)getIntent().getSerializableExtra("writeFoodDetail");
         mBoardBean = (BoardBean)getIntent().getSerializableExtra("startTimeDetail");
         mBoardBean = (BoardBean)getIntent().getSerializableExtra("endTimeDetail");
@@ -69,8 +71,17 @@ public class DetailActivity extends AppCompatActivity {
         mBoardBean = (BoardBean)getIntent().getSerializableExtra("lowestPrice");
         mBoardBean = (BoardBean)getIntent().getSerializableExtra("totalPrice");
 
-        Button btnjoin = findViewById(R.id.btnJoin);
-        ImageButton btnkakaolink = findViewById(R.id.btnkakaolink);
+        Button btnJoin = findViewById(R.id.btnJoin);
+        ImageButton btnCommit = findViewById(R.id.btnCommit);
+        ImageButton btnkakaolink =findViewById(R.id.btnkakaolink);
+
+        if(TextUtils.equals(mBoardBean.writerId, mFirebaseAuth.getCurrentUser().getEmail())){
+            btnJoin.setVisibility(View.INVISIBLE);
+            btnCommit.setVisibility(View.VISIBLE);
+        }else{
+            btnJoin.setVisibility(View.VISIBLE);
+            btnCommit.setVisibility(View.INVISIBLE);
+        }
 
         onResume();
 
@@ -95,11 +106,9 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
-        final EditText et = new EditText(this);
-        btnjoin.setOnClickListener(new View.OnClickListener() {
+        btnJoin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(DetailActivity.this);
 
                 dialogBuilder.setTitle("참여하기");
@@ -159,12 +168,16 @@ public class DetailActivity extends AppCompatActivity {
 
                     }
                 }).setNegativeButton("취소", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int whichButton) {
-
-                    }
+                    public void onClick(DialogInterface dialog, int whichButton) {  }
                 });
                 dialogBuilder.show();
+            }
+        });
 
+        btnCommit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Toast.makeText(DetailActivity.this, "완료된 주문입니다.", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -175,9 +188,8 @@ public class DetailActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
     }
+
 
     @Override
     protected void onResume() {
