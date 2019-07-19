@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SWUFinalProject</string>
+    <string name="app_name">슈:달</string>
 
     <string-array name="spinner_food">
         <item>한식</item>

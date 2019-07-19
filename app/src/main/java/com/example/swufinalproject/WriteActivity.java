@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -82,6 +83,12 @@ public class WriteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write);
 
+        //GPS 퍼미션 요청
+        ActivityCompat.requestPermissions(this,
+                new String[] {
+                        Manifest.permission.ACCESS_COARSE_LOCATION,
+                        Manifest.permission.ACCESS_FINE_LOCATION
+                }, 0);
 
         final Spinner spinnerFoodWrite = findViewById(R.id.spinnerFoodWrite);
         final Spinner spinnerLocation = findViewById(R.id.spinnerLocation);
@@ -186,7 +193,7 @@ public class WriteActivity extends AppCompatActivity {
         //WIFI 위치를 0.1초마다 10m 간격범위안에서 이동하면 위치를 listener 로 보내주도록 등록한다.
         mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 10, locationListener);
 
-        //intPrice = Integer.parseInt(txtwriterPrice) + Integer.parseInt(txtPrice);
+
 
         //글쓰기 완료 버튼 누르면 DB 저장
         ImageButton btnComplete = (ImageButton) findViewById(R.id.btnComplete);
@@ -217,6 +224,8 @@ public class WriteActivity extends AppCompatActivity {
                 boardBean.memo = txtMemo;
                 boardBean.kakaolink = txtedtlink;
                 boardBean.kakaopwd = txtedtpwd;
+
+                //dsafdafsaf
 
                 //내가 쓴 글도 참여내역에 뜨도록
                 key = "true";
