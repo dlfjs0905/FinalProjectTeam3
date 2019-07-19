@@ -2,6 +2,7 @@ package com.example.swufinalproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,7 @@ public class Fragment_list extends Fragment {
     private FirebaseDatabase mFirebaseDB = FirebaseDatabase.getInstance();
     private ListView mListView;
     private List<BoardBean> mBoardList = new ArrayList<>();
+    private List<BoardBean> mBoardList2 = new ArrayList<>();
     private BoardAdapter mBoardAdapter;
     private DatabaseReference mReference;
 
@@ -46,6 +48,7 @@ public class Fragment_list extends Fragment {
 
         //최초 데이터 셋팅
         mBoardAdapter = new BoardAdapter(getContext(), mBoardList);
+        mBoardAdapter = new BoardAdapter(getContext(), mBoardList2);
         mListView.setAdapter(mBoardAdapter);
         view.findViewById(R.id.btnWrite).setOnClickListener(mClicks);
 
@@ -55,11 +58,19 @@ public class Fragment_list extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 //데이터를 받아와서 List에 저장.
                 mBoardList.clear();
+                mBoardList2.clear();
 
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     BoardBean bean = snapshot.getValue(BoardBean.class);
-                    mBoardList.add(0, bean);
+
+                    if (TextUtils.equals(bean.full, "unfull")) {
+                        mBoardList.add(0, bean);
+                    } if (TextUtils.equals(bean.full, "full")) {
+                        mBoardList2.add(0, bean);
+                    }
                 }
+                mBoardList.addAll(mBoardList2);
+
                 //바뀐 데이터로 Refresh 한다.
                 if(mBoardAdapter != null) {
                     mBoardAdapter.setBoardList(mBoardList);
