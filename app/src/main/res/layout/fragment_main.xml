@@ -48,15 +48,19 @@
         <Spinner
             android:id="@+id/spinner"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="10dp"
+            android:layout_gravity="center"
+            android:background="@drawable/spinnerbox"
             android:layout_weight="1.5" />
 
         <Spinner
             android:id="@+id/spinner2"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinnerbox"
+            android:layout_gravity="center"
             android:layout_marginRight="10dp"
             android:layout_weight="2" />
 
@@ -64,7 +68,7 @@
             android:id="@+id/btn_refresh"
             android:layout_width="0dp"
             android:layout_height="53dp"
-            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
             android:layout_marginRight="10dp"
             android:layout_weight="0.8"
             android:backgroundTint="#00FFFFFF"
