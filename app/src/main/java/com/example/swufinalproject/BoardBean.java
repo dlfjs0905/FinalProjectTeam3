@@ -8,6 +8,7 @@ public class BoardBean implements Serializable {
 
     public String id;
     public String writerId;
+    public String full;
     public String food;
     public String starttime;
     public String endtime;
