@@ -7,6 +7,7 @@ import java.io.Serializable;
 public class BoardBean implements Serializable {
 
     public String id;
+    public String writerId;
     public String food;
     public String starttime;
     public String endtime;

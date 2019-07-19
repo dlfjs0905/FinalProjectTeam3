@@ -211,8 +211,11 @@ public class WriteActivity extends AppCompatActivity {
                 txtedtlink = edtlink.getText().toString();
                 txtedtpwd = edtpwd.getText().toString();
 
+                //데이터 담을 객체 선언
                 BoardBean boardBean = new BoardBean();
+
                 boardBean.id = id;
+                boardBean.writerId = mFirebaseAuth.getCurrentUser().getEmail();
                 boardBean.food = txtFoodWrite;
                 boardBean.price = txtPrice;
                 boardBean.myprice = txtwriterPrice;
@@ -237,6 +240,12 @@ public class WriteActivity extends AppCompatActivity {
             }
         });
     }
+
+    public static String getUserIdFromUUID(String userEmail) {
+        long val = UUID.nameUUIDFromBytes(userEmail.getBytes()).getMostSignificantBits();
+        return String.valueOf(val);
+    }
+
 
     private LocationListener locationListener = new LocationListener() {
         @Override
@@ -328,6 +337,4 @@ public class WriteActivity extends AppCompatActivity {
 
         }
     };
-
-
 }
