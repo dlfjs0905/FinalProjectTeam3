@@ -47,6 +47,7 @@ import com.google.firebase.storage.UploadTask;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
+import java.util.zip.Inflater;
 
 public class WriteActivity extends AppCompatActivity {
 
@@ -68,6 +69,7 @@ public class WriteActivity extends AppCompatActivity {
     String choice_location = "";
     String choice_startTime = "";
     String choice_endTime = "";
+    private int intPrice;
 
     TextView txtTime, txtLocation;
     private BoardBean mBoardBean;
