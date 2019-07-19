@@ -1,6 +1,7 @@
 package com.example.swufinalproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +75,20 @@ public class JoinAdapter extends BaseAdapter {
             imgBar.setImageResource(R.drawable.bar_100per);
         }
 
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContextJoin, DetailActivity.class);
+                intent.putExtra("writeFoodDetail", boardBean2);
+                intent.putExtra("startTimeDetail", boardBean2);
+                intent.putExtra("endTimeDetail", boardBean2);
+                intent.putExtra("locationDetail", boardBean2);
+                intent.putExtra("memoDetail", boardBean2);
+                intent.putExtra("lowestPrice", boardBean2);
+                intent.putExtra("totalPrice", boardBean2);
+                mContextJoin.startActivity(intent);
+            }
+        });
 
         return view;
     }

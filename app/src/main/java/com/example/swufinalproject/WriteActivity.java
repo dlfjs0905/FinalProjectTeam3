@@ -225,8 +225,6 @@ public class WriteActivity extends AppCompatActivity {
                 boardBean.kakaolink = txtedtlink;
                 boardBean.kakaopwd = txtedtpwd;
 
-                //dsafdafsaf
-
                 //내가 쓴 글도 참여내역에 뜨도록
                 key = "true";
                 boardBean.key = key;
