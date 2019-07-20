@@ -247,6 +247,7 @@ public class WriteActivity extends AppCompatActivity {
 
                 String iwanttojoin = mFirebaseAuth.getCurrentUser().getEmail();
                 boardBean.getUserList().add(iwanttojoin);
+                boardBean.getUserPrice().add(txtwriterPrice);
 
                 dbRef.child(boardBean.id).setValue(boardBean);
 

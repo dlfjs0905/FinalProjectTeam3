@@ -320,7 +320,7 @@
                     android:id="@+id/number"
                     android:layout_marginLeft="10dp"
                     android:layout_width="0dp"
-                    android:layout_weight="3.5"
+                    android:layout_weight="3"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textSize="15sp"
@@ -328,10 +328,19 @@
                 <TextView
                     android:id="@+id/joinid"
                     android:layout_width="0dp"
-                    android:layout_weight="6.5"
+                    android:layout_weight="5"
+                    android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:text="아이디"/>
+                <TextView
+                    android:id="@+id/joinPrice"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:textSize="15sp"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="금액"/>
             </LinearLayout>
 
         </LinearLayout>

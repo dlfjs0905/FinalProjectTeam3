@@ -26,12 +26,20 @@ public class BoardBean implements Serializable {
     public String kakaopwd;
 
     private List<String> userList;
+    private List<String> userPrice;
 
     public List<String> getUserList() {
         if(userList == null) {
             userList = new ArrayList<>();
         }
         return userList;
+    }
+
+    public List<String> getUserPrice() {
+        if(userPrice == null) {
+            userPrice = new ArrayList<>();
+        }
+        return userPrice;
     }
 
     public void setUserList(List<String> userList) {

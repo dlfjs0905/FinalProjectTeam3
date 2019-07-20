@@ -187,6 +187,8 @@ public class DetailActivity extends AppCompatActivity {
                                 dbIntprice = dbIntprice + curIntprice;                  //두 int의 값을 더해서 최종 합 price를 정한다.
 
 
+                                mBoardBean.getUserPrice().add(value);
+                                dbRef.child(mBoardBean.id).setValue(mBoardBean);
                                 mBoardBean.myprice = String.valueOf(value);
                                 dbStringprice = String.valueOf(dbIntprice);            //다시 db에 넣기 위해 string으로 변환
                                 mBoardBean.totalprice = dbStringprice;                      //db price값을 수정한다.
@@ -282,6 +284,7 @@ public class DetailActivity extends AppCompatActivity {
         TextView writeFoodSpinner = findViewById(R.id.writeFoodSpinner);
         TextView number = findViewById(R.id.number);
         TextView joinid = findViewById(R.id.joinid);
+        TextView joinPrice = findViewById(R.id.joinPrice);
 
         writeFoodDetail.setText(mBoardBean.food);
         startTimeDetail.setText(mBoardBean.starttime);
@@ -297,12 +300,19 @@ public class DetailActivity extends AppCompatActivity {
 
         String[] mStringArray = new String[mBoardBean.getUserList().size()];
         mStringArray = mBoardBean.getUserList().toArray(mStringArray);
+        String[] mStringArray2 = new String[mBoardBean.getUserPrice().size()];
+        mStringArray2 = mBoardBean.getUserPrice().toArray(mStringArray2);
+
+        joinPrice.setText(mStringArray2[0] + "원");
 
         for(int i = 1; i < mStringArray.length ; i++){
             joinid.append("\n" + mStringArray[i]);
         }
         for(int i = 1; i < mStringArray.length ; i++){
             number.append("\n" + (i+1));
+        }
+        for(int i = 1; i < mStringArray2.length ; i++){
+            joinPrice.append("\n" + mStringArray2[i] + "원");
         }
 
         mWriterPrice = (Integer.parseInt(mBoardBean.totalprice)); //현재 참여 금액 int로 변경
