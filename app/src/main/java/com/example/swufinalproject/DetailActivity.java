@@ -2,14 +2,21 @@ package com.example.swufinalproject;
 
 import android.Manifest;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
@@ -23,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -44,6 +52,8 @@ public class DetailActivity extends AppCompatActivity {
     private FirebaseStorage mFirebaseStorage = FirebaseStorage.getInstance(STORAGE_DB_URL);
     private FirebaseDatabase mFirebaseDatabase = FirebaseDatabase.getInstance();
     private BoardBean mBoardBean;
+
+
     private int mPrice;
     private int mWriterPrice;
 
@@ -55,6 +65,10 @@ public class DetailActivity extends AppCompatActivity {
     private int dbIntprice, curIntprice;
     private String dbStringprice, key;
 
+    private NotificationManager notificationManager;
+    private static final int NOTIFICATION_ID = 1;
+
+
     //public int index; //주문 접수 마감
 
 
@@ -64,6 +78,8 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         final EditText et = new EditText(this);
+
+        //mJoinAdapter = new JoinAdapter(getContext(), mJoinList);
 
         mBoardBean = (BoardBean)getIntent().getSerializableExtra("writeFoodDetail");
         mBoardBean = (BoardBean)getIntent().getSerializableExtra("startTimeDetail");
@@ -172,6 +188,8 @@ public class DetailActivity extends AppCompatActivity {
 
                                         //여기에 이제 글쓴이에게 알림창
 
+                                        generatNotification();
+
                                     }
                                 });
                                 dialogBuilder2.show();
@@ -270,6 +288,28 @@ public class DetailActivity extends AppCompatActivity {
         }
 
     }
+
+
+    private void generatNotification() {
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
+
+        builder.setSmallIcon(R.mipmap.ic_launcher);
+        builder.setContentTitle(mBoardBean.getUserList().get(mBoardBean.getUserList().size()-1)+"님이 참여하였습니다.");
+        builder.setContentText("참여 금액: "+mBoardBean.myprice+"원      총 금액: "+mBoardBean.totalprice+"원");
+
+        // 알림 표시
+        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            notificationManager.createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_DEFAULT));
+        }
+
+// id값은
+// 정의해야하는 각 알림의 고유한 int값
+        notificationManager.notify(1, builder.build());
+    }
+
+
 
     private LocationListener locationListener = new LocationListener() {
         @Override
