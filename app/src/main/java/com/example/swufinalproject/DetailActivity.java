@@ -319,7 +319,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         }
         for (int i = 1; i < mStringArray.length; i++) {
-            number.append("\n" + (i + 1));
+            number.append("\n" + i);
         }
         for (int i = 1; i < mStringArray2.length; i++) {
             joinPrice.append("\n" + mStringArray2[i] + "원");
