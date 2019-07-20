@@ -209,8 +209,6 @@ public class DetailActivity extends AppCompatActivity {
 
                                         //여기에 이제 글쓴이에게 알림창
 
-                                        generatNotification();
-
                                     }
                                 });
                                 dialogBuilder2.show();
@@ -305,14 +303,29 @@ public class DetailActivity extends AppCompatActivity {
 
         joinPrice.setText(mStringArray2[0] + "원");
 
-        for(int i = 1; i < mStringArray.length ; i++){
-            joinid.append("\n" + mStringArray[i]);
+        if (TextUtils.equals(mBoardBean.writerId, mFirebaseAuth.getCurrentUser().getEmail())) {
+            for (int i = 1; i < mStringArray.length; i++) {
+                joinid.append("\n" + mStringArray[i]);
+            }
+        } else {
+            String a = "*";
+
+            for (int j = 1; j < mStringArray.length; j++) {
+                a = "*";
+                for (int i = 1; i < mStringArray[j].length()-3; i++) {
+                    a = a+"*";
+                }
+            }
+            for (int i = 1; i < mStringArray.length; i++) {
+                joinid.append("\n" + mStringArray[i].charAt(0) + mStringArray[i].charAt(1) + mStringArray[i].charAt(2) + a);
+            }
         }
-        for(int i = 1; i < mStringArray.length ; i++){
-            number.append("\n" + (i+1));
+        for (int i = 1; i < mStringArray.length; i++) {
+            number.append("\n" + (i + 1));
         }
-        for(int i = 1; i < mStringArray2.length ; i++){
+        for (int i = 1; i < mStringArray2.length; i++) {
             joinPrice.append("\n" + mStringArray2[i] + "원");
+
         }
 
         mWriterPrice = (Integer.parseInt(mBoardBean.totalprice)); //현재 참여 금액 int로 변경
@@ -332,26 +345,6 @@ public class DetailActivity extends AppCompatActivity {
             imgBar.setImageResource(R.drawable.bar_100per);
         }
 
-    }
-
-
-    private void generatNotification() {
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
-
-        builder.setSmallIcon(R.mipmap.ic_launcher);
-        builder.setContentTitle(mBoardBean.getUserList().get(mBoardBean.getUserList().size()-1)+"님이 참여하였습니다.");
-        builder.setContentText("참여 금액: "+mBoardBean.myprice+"원      총 금액: "+mBoardBean.totalprice+"원");
-
-        // 알림 표시
-        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            notificationManager.createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_DEFAULT));
-        }
-
-// id값은
-// 정의해야하는 각 알림의 고유한 int값
-        notificationManager.notify(1, builder.build());
     }
 
 
