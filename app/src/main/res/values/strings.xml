@@ -9,6 +9,13 @@
         <item>분식</item>
         <item>패스트푸드</item>
     </string-array>
+    <string-array name="spinner_food2">
+        <item>한식</item>
+        <item>중식</item>
+        <item>일식</item>
+        <item>분식</item>
+        <item>패스트푸드</item>
+    </string-array>
     <string-array name="spinner_location">
         <item>상관없음</item>
         <item>샬롬하우스</item>

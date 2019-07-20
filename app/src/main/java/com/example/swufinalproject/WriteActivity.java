@@ -104,7 +104,7 @@ public class WriteActivity extends AppCompatActivity {
         minjoinprice = findViewById(R.id.minJoinPrice);
 
         //음식 선택 스피너
-        ArrayAdapter<CharSequence> adapterFoodWrite = ArrayAdapter.createFromResource(this, R.array.spinner_food, android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapterFoodWrite = ArrayAdapter.createFromResource(this, R.array.spinner_food2, android.R.layout.simple_spinner_dropdown_item);
         adapterFoodWrite.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerFoodWrite.setAdapter(adapterFoodWrite);
         spinnerFoodWrite.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
