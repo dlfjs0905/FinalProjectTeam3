@@ -100,18 +100,18 @@ public class Fragment_main extends Fragment {
 
                                 for(DataSnapshot snapshot : dataSnapshot.getChildren()) {
                                     BoardBean bean = snapshot.getValue(BoardBean.class);
-                                    if (TextUtils.equals(choice_food, "상관없음") && TextUtils.equals(choice_loc, "상관없음") && TextUtils.equals(bean.full, "unfull")) {
+                                    if (TextUtils.equals(choice_food, "음식") && TextUtils.equals(choice_loc, "장소") && TextUtils.equals(bean.full, "unfull")) {
                                         mBoardList.add(0, bean);
                                     }
-                                    else if (TextUtils.equals(choice_food, "상관없음") && TextUtils.equals(bean.choice_location, choice_loc) && TextUtils.equals(bean.full, "unfull")) {
+                                    else if (TextUtils.equals(choice_food, "음식") && TextUtils.equals(bean.choice_location, choice_loc) && TextUtils.equals(bean.full, "unfull")) {
                                         mBoardList.add(0, bean);
                                     }
-                                    else if (TextUtils.equals(choice_food, "상관없음") && TextUtils.equals(bean.choice_location, "상관없음") && TextUtils.equals(bean.full, "unfull")) {
+                                    else if (TextUtils.equals(choice_food, "음식") && TextUtils.equals(bean.choice_location, "장소") && TextUtils.equals(bean.full, "unfull")) {
                                         mBoardList.add(0, bean);
                                     }
-                                    else if (TextUtils.equals(bean.choice_foodWrite, choice_food) && TextUtils.equals(choice_loc, "상관없음") && TextUtils.equals(bean.full, "unfull")) {
+                                    else if (TextUtils.equals(bean.choice_foodWrite, choice_food) && TextUtils.equals(choice_loc, "장소") && TextUtils.equals(bean.full, "unfull")) {
                                         mBoardList.add(0, bean);
-                                    } else if (TextUtils.equals(bean.choice_foodWrite, choice_food) && TextUtils.equals(bean.choice_location, "상관없음")&& TextUtils.equals(bean.full, "unfull")) {
+                                    } else if (TextUtils.equals(bean.choice_foodWrite, choice_food) && TextUtils.equals(bean.choice_location, "장소")&& TextUtils.equals(bean.full, "unfull")) {
                                         mBoardList.add(0, bean);
 
                                     } else if (TextUtils.equals(bean.choice_foodWrite, choice_food) && TextUtils.equals(bean.choice_location, choice_loc)&& TextUtils.equals(bean.full, "unfull")) {

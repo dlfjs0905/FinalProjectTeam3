@@ -2,7 +2,7 @@
     <string name="app_name">슈:달</string>
 
     <string-array name="spinner_food">
-        <item>상관없음</item>
+        <item>음식</item>
         <item>한식</item>
         <item>중식</item>
         <item>일식</item>
@@ -17,7 +17,7 @@
         <item>패스트푸드</item>
     </string-array>
     <string-array name="spinner_location">
-        <item>상관없음</item>
+        <item>장소</item>
         <item>샬롬하우스</item>
         <item>국제생활관</item>
         <item>50주년기념관</item>

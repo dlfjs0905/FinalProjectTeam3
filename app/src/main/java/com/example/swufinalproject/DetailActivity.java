@@ -22,6 +22,7 @@ import android.os.Handler;
 import android.provider.Settings;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -45,6 +46,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
+
+import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -273,16 +280,30 @@ public class DetailActivity extends AppCompatActivity {
         TextView minJoinPrice = findViewById(R.id.minJoinPrice);
         ImageView imgBar = findViewById(R.id.imgBar);
         TextView writeFoodSpinner = findViewById(R.id.writeFoodSpinner);
+        TextView number = findViewById(R.id.number);
+        TextView joinid = findViewById(R.id.joinid);
 
         writeFoodDetail.setText(mBoardBean.food);
         startTimeDetail.setText(mBoardBean.starttime);
         endTimeDetail.setText(mBoardBean.endtime);
         locationDetail.setText(mBoardBean.choice_location);
         memoDetail.setText(mBoardBean.memo);
+        number.setText("1(글쓴이)");
+        joinid.setText(mBoardBean.writerId);
         minJoinPrice.setText(mBoardBean.minjoinprice + "원");
         lowestPrice.setText("목표 금액 : " + mBoardBean.price + "원");
         totalPrice.setText("현재 금액 : " + mBoardBean.totalprice + "원");
         writeFoodSpinner.setText(mBoardBean.choice_foodWrite);
+
+        String[] mStringArray = new String[mBoardBean.getUserList().size()];
+        mStringArray = mBoardBean.getUserList().toArray(mStringArray);
+
+        for(int i = 1; i < mStringArray.length ; i++){
+            joinid.append("\n" + mStringArray[i]);
+        }
+        for(int i = 1; i < mStringArray.length ; i++){
+            number.append("\n" + (i+1));
+        }
 
         mWriterPrice = (Integer.parseInt(mBoardBean.totalprice)); //현재 참여 금액 int로 변경
         mPrice = (Integer.parseInt(mBoardBean.price)/5); //최소 금액 int로 변경
