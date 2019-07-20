@@ -315,9 +315,7 @@ public class DetailActivity extends AppCompatActivity {
                 for (int i = 1; i < mStringArray[j].length()-3; i++) {
                     a = a+"*";
                 }
-            }
-            for (int i = 1; i < mStringArray.length; i++) {
-                joinid.append("\n" + mStringArray[i].charAt(0) + mStringArray[i].charAt(1) + mStringArray[i].charAt(2) + a);
+                joinid.append("\n" + mStringArray[j].charAt(0) + mStringArray[j].charAt(1) + mStringArray[j].charAt(2) + a);
             }
         }
         for (int i = 1; i < mStringArray.length; i++) {
