@@ -308,7 +308,7 @@ public class DetailActivity extends AppCompatActivity {
                 joinid.append("\n" + mStringArray[i]);
             }
         } else {
-            String a = "*";
+            String a;
 
             for (int j = 1; j < mStringArray.length; j++) {
                 a = "*";
