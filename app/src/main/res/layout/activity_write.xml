@@ -259,6 +259,67 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.2"
+                        android:src="@drawable/minpri" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:text="참가자들의 최소참여금액을 지정하고 싶으면 입력해주세요."/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/minJoinPrice"
+                            android:layout_width="120dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:background="@drawable/textline"
+                            android:ems="10"
+                            android:layout_marginTop="4dp"
+                            android:gravity="center"
+                            android:hint="예) 5000"
+                            android:inputType="number"
+                            android:digits="0123456789"
+                            android:textAlignment="center"
+                            android:textColor="#998C8E"
+                            android:textSize="20sp" />
+
+                        <TextView
+                            android:id="@+id/text76"
+                            android:layout_width="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:gravity="center"
+                            android:text="원"
+                            android:layout_marginTop="4dp"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:orientation="vertical">
 
