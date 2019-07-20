@@ -169,6 +169,9 @@ public class DetailActivity extends AppCompatActivity {
                                 dialogBuilder2.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int whichButton) {
                                         Toast.makeText(DetailActivity.this, "참여가 완료되었습니다.", Toast.LENGTH_SHORT).show();
+
+                                        //여기에 이제 글쓴이에게 알림창
+
                                     }
                                 });
                                 dialogBuilder2.show();
