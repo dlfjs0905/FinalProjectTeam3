@@ -106,6 +106,9 @@ public class Fragment_main extends Fragment {
                                     else if (TextUtils.equals(choice_food, "상관없음") && TextUtils.equals(bean.choice_location, choice_loc) && TextUtils.equals(bean.full, "unfull")) {
                                         mBoardList.add(0, bean);
                                     }
+                                    else if (TextUtils.equals(choice_food, "상관없음") && TextUtils.equals(bean.choice_location, "상관없음") && TextUtils.equals(bean.full, "unfull")) {
+                                        mBoardList.add(0, bean);
+                                    }
                                     else if (TextUtils.equals(bean.choice_foodWrite, choice_food) && TextUtils.equals(choice_loc, "상관없음") && TextUtils.equals(bean.full, "unfull")) {
                                         mBoardList.add(0, bean);
                                     } else if (TextUtils.equals(bean.choice_foodWrite, choice_food) && TextUtils.equals(bean.choice_location, "상관없음")&& TextUtils.equals(bean.full, "unfull")) {
