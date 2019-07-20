@@ -2,6 +2,7 @@
     <string name="app_name">슈:달</string>
 
     <string-array name="spinner_food">
+        <item>상관없음</item>
         <item>한식</item>
         <item>중식</item>
         <item>일식</item>
