@@ -303,10 +303,9 @@ public class DetailActivity extends AppCompatActivity {
 
         joinPrice.setText(mStringArray2[0] + "원");
 
-        String b = "";
         if (TextUtils.equals(mBoardBean.writerId, mFirebaseAuth.getCurrentUser().getEmail())) {
             for (int i = 1; i < mStringArray.length; i++) {
-                joinid.append("\n" + mStringArray[i] + b);
+                joinid.append("\n" + mStringArray[i]);
             }
         } else {
             String a;
@@ -320,7 +319,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         }
         for (int i = 1; i < mStringArray.length; i++) {
-            number.append("\n" + i);
+            number.append("\n" + (i + 1));
         }
         for (int i = 1; i < mStringArray2.length; i++) {
             joinPrice.append("\n" + mStringArray2[i] + "원");
