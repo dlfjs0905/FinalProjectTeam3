@@ -304,12 +304,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginBottom="15dp">
+            android:layout_marginBottom="10dp">
             <ImageView
                 android:id="@+id/imageView30"
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
                 app:srcCompat="@drawable/joinlist" />
             <LinearLayout
                 android:layout_width="match_parent"
@@ -355,7 +355,7 @@
                 <ImageView
                     android:id="@+id/imageView10"
                     android:layout_width="match_parent"
-                    android:layout_height="56dp"
+                    android:layout_height="wrap_content"
                     app:srcCompat="@drawable/line_addcontent" />
 
                 <TextView
