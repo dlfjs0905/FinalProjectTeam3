@@ -289,7 +289,7 @@ public class DetailActivity extends AppCompatActivity {
         endTimeDetail.setText(mBoardBean.endtime);
         locationDetail.setText(mBoardBean.choice_location);
         memoDetail.setText(mBoardBean.memo);
-        number.setText("1(글쓴이)");
+        number.setText("글쓴이");
         joinid.setText(mBoardBean.writerId);
         minJoinPrice.setText(mBoardBean.minjoinprice + "원");
         lowestPrice.setText("목표 금액 : " + mBoardBean.price + "원");
@@ -303,9 +303,10 @@ public class DetailActivity extends AppCompatActivity {
 
         joinPrice.setText(mStringArray2[0] + "원");
 
+        String b = "";
         if (TextUtils.equals(mBoardBean.writerId, mFirebaseAuth.getCurrentUser().getEmail())) {
             for (int i = 1; i < mStringArray.length; i++) {
-                joinid.append("\n" + mStringArray[i]);
+                joinid.append("\n" + mStringArray[i] + b);
             }
         } else {
             String a;
@@ -319,7 +320,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         }
         for (int i = 1; i < mStringArray.length; i++) {
-            number.append("\n" + (i + 1));
+            number.append("\n" + i);
         }
         for (int i = 1; i < mStringArray2.length; i++) {
             joinPrice.append("\n" + mStringArray2[i] + "원");
