@@ -68,6 +68,8 @@ public class DetailActivity extends AppCompatActivity {
     private NotificationManager notificationManager;
     private static final int NOTIFICATION_ID = 1;
 
+    private int mMinPrice, mValue; //최소 참여 금액 값 확인을 위한 변수
+
 
     //public int index; //주문 접수 마감
 
@@ -157,10 +159,17 @@ public class DetailActivity extends AppCompatActivity {
                         String value = et.getText().toString();         //입력창 생성
                         String value_n = et.getText().toString();
 
+                        //최소 참여 금액 확인을 위해 인트로 변경
+                        mMinPrice = Integer.parseInt(mBoardBean.minjoinprice);
+                        mValue = Integer.parseInt(value);
+
                             if (value_n.matches("")) {
                                 Toast.makeText(getBaseContext(), "값을 입력하세요", Toast.LENGTH_SHORT).show();
-
-                            } else {
+                            }
+                            if (mValue < mMinPrice){ //입력 값이 최소 참여 금액에 부합하는지 확인
+                                Toast.makeText(getBaseContext(), "최소 참여 금액 이상 주문해주세요.", Toast.LENGTH_SHORT).show();
+                            }
+                            else {
 
                                 dbIntprice = Integer.parseInt(mBoardBean.totalprice);    //DB에 Strng으로 저장된 가격을 int형으로 바꿔서 dbintprice에 저장
                                 curIntprice = Integer.parseInt(value);                  //사용자가 입력한 금액도 int로 바궈준다.
@@ -258,6 +267,7 @@ public class DetailActivity extends AppCompatActivity {
         TextView endTimeDetail = findViewById(R.id.endTimeDetail);
         TextView locationDetail = findViewById(R.id.locationDetail);
         TextView memoDetail = findViewById(R.id.memoDetail);
+        TextView minJoinPrice = findViewById(R.id.minJoinPrice);
         ImageView imgBar = findViewById(R.id.imgBar);
         TextView writeFoodSpinner = findViewById(R.id.writeFoodSpinner);
 
@@ -266,6 +276,7 @@ public class DetailActivity extends AppCompatActivity {
         endTimeDetail.setText(mBoardBean.endtime);
         locationDetail.setText(mBoardBean.choice_location);
         memoDetail.setText(mBoardBean.memo);
+        minJoinPrice.setText(mBoardBean.minjoinprice + "원");
         lowestPrice.setText("목표 금액 : " + mBoardBean.price + "원");
         totalPrice.setText("현재 금액 : " + mBoardBean.totalprice + "원");
         writeFoodSpinner.setText(mBoardBean.choice_foodWrite);

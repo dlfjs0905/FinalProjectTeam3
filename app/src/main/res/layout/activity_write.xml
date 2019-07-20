@@ -150,7 +150,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="120dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -158,6 +158,13 @@
                         android:layout_height="0dp"
                         android:layout_weight="1.2"
                         android:src="@drawable/line_mincost" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:text="모으길 원하는 목표 금액을 적어주세요."/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -259,7 +266,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="130dp"
                     android:orientation="vertical">
 
                     <ImageView
@@ -272,8 +279,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginTop="10dp"
                         android:text="참가자들의 최소참여금액을 지정하고 싶으면 입력해주세요."/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="(따로 지정하지 않으면 기본 값은 0원입니다.)"/>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -291,7 +304,7 @@
                             android:ems="10"
                             android:layout_marginTop="4dp"
                             android:gravity="center"
-                            android:hint="예) 5000"
+                            android:text="0"
                             android:inputType="number"
                             android:digits="0123456789"
                             android:textAlignment="center"
