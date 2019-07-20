@@ -89,8 +89,6 @@ public class DetailActivity extends AppCompatActivity {
 
         final EditText et = new EditText(this);
 
-        //mJoinAdapter = new JoinAdapter(getContext(), mJoinList);
-
         mBoardBean = (BoardBean)getIntent().getSerializableExtra("writeFoodDetail");
         mBoardBean = (BoardBean)getIntent().getSerializableExtra("startTimeDetail");
         mBoardBean = (BoardBean)getIntent().getSerializableExtra("endTimeDetail");
@@ -188,7 +186,7 @@ public class DetailActivity extends AppCompatActivity {
 
 
                                 mBoardBean.getUserPrice().add(value);
-                                dbRef.child(mBoardBean.id).setValue(mBoardBean);
+
                                 mBoardBean.myprice = String.valueOf(value);
                                 dbStringprice = String.valueOf(dbIntprice);            //다시 db에 넣기 위해 string으로 변환
                                 mBoardBean.totalprice = dbStringprice;                      //db price값을 수정한다.
@@ -206,10 +204,6 @@ public class DetailActivity extends AppCompatActivity {
                                 dialogBuilder2.setPositiveButton("확인", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int whichButton) {
                                         Toast.makeText(DetailActivity.this, "참여가 완료되었습니다.", Toast.LENGTH_SHORT).show();
-
-                                        //여기에 이제 글쓴이에게 알림창
-
-                                        generatNotification();
 
                                     }
                                 });
@@ -272,7 +266,7 @@ public class DetailActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        TextView  lowestPrice= findViewById(R.id.lowestPrice);
+        TextView lowestPrice = findViewById(R.id.lowestPrice);
         TextView totalPrice = findViewById(R.id.totalPrice);
         TextView writeFoodDetail = findViewById(R.id.writeFoodDetail);
         TextView startTimeDetail = findViewById(R.id.startTimeDetail);
@@ -305,55 +299,48 @@ public class DetailActivity extends AppCompatActivity {
 
         joinPrice.setText(mStringArray2[0] + "원");
 
-        for(int i = 1; i < mStringArray.length ; i++){
-            joinid.append("\n" + mStringArray[i]);
+        if (TextUtils.equals(mBoardBean.writerId, mFirebaseAuth.getCurrentUser().getEmail())) {
+            for (int i = 1; i < mStringArray.length; i++) {
+                joinid.append("\n" + mStringArray[i]);
+
+            }
+        } else {
+            StringBuilder a = new StringBuilder( "" );
+            for(int i =3;i<mStringArray.length;i++){
+                a.append( "*" );
+            }
+            for (int i = 1; i < mStringArray.length; i++) {
+                joinid.append("\n" + mStringArray[i].charAt(0)+ mStringArray[i].charAt(1)+ mStringArray[i].charAt(2)+a);
+            }
         }
-        for(int i = 1; i < mStringArray.length ; i++){
-            number.append("\n" + (i+1));
+        for (int i = 1; i < mStringArray.length; i++) {
+            number.append("\n" + (i + 1));
         }
-        for(int i = 1; i < mStringArray2.length ; i++){
+        for (int i = 1; i < mStringArray2.length; i++) {
             joinPrice.append("\n" + mStringArray2[i] + "원");
+
         }
 
         mWriterPrice = (Integer.parseInt(mBoardBean.totalprice)); //현재 참여 금액 int로 변경
-        mPrice = (Integer.parseInt(mBoardBean.price)/5); //최소 금액 int로 변경
+        mPrice = (Integer.parseInt(mBoardBean.price) / 5); //최소 금액 int로 변경
 
 
         //바 이미지 변경
-        if ((mPrice <= mWriterPrice) && (mWriterPrice < (mPrice * 2))){
+        if ((mPrice <= mWriterPrice) && (mWriterPrice < (mPrice * 2))) {
             imgBar.setImageResource(R.drawable.bar_20per);
-        } else if (((mPrice * 2) <= mWriterPrice) && (mWriterPrice < (mPrice * 3))){
+        } else if (((mPrice * 2) <= mWriterPrice) && (mWriterPrice < (mPrice * 3))) {
             imgBar.setImageResource(R.drawable.bar_40per);
-        } else if (((mPrice * 3) <= mWriterPrice) && (mWriterPrice < (mPrice * 4))){ //
+        } else if (((mPrice * 3) <= mWriterPrice) && (mWriterPrice < (mPrice * 4))) { //
             imgBar.setImageResource(R.drawable.bar_60per);
-        } else if (((mPrice* 4) <= mWriterPrice) && (mWriterPrice < (mPrice * 5))){
+        } else if (((mPrice * 4) <= mWriterPrice) && (mWriterPrice < (mPrice * 5))) {
             imgBar.setImageResource(R.drawable.bar_80per);
-        } else if (mWriterPrice >= (mPrice * 5)){
+        } else if (mWriterPrice >= (mPrice * 5)) {
             imgBar.setImageResource(R.drawable.bar_100per);
         }
 
+
+
     }
-
-
-    private void generatNotification() {
-
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "default");
-
-        builder.setSmallIcon(R.mipmap.ic_launcher);
-        builder.setContentTitle(mBoardBean.getUserList().get(mBoardBean.getUserList().size()-1)+"님이 참여하였습니다.");
-        builder.setContentText("참여 금액: "+mBoardBean.myprice+"원      총 금액: "+mBoardBean.totalprice+"원");
-
-        // 알림 표시
-        NotificationManager notificationManager = (NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            notificationManager.createNotificationChannel(new NotificationChannel("default", "기본 채널", NotificationManager.IMPORTANCE_DEFAULT));
-        }
-
-// id값은
-// 정의해야하는 각 알림의 고유한 int값
-        notificationManager.notify(1, builder.build());
-    }
-
 
 
     private LocationListener locationListener = new LocationListener() {
