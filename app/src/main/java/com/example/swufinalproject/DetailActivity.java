@@ -188,7 +188,6 @@ public class DetailActivity extends AppCompatActivity {
 
 
                                 mBoardBean.getUserPrice().add(value);
-                                dbRef.child(mBoardBean.id).setValue(mBoardBean);
                                 mBoardBean.myprice = String.valueOf(value);
                                 dbStringprice = String.valueOf(dbIntprice);            //다시 db에 넣기 위해 string으로 변환
                                 mBoardBean.totalprice = dbStringprice;                      //db price값을 수정한다.
