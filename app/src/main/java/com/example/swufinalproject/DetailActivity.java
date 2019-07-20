@@ -20,6 +20,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.Settings;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -144,6 +145,8 @@ public class DetailActivity extends AppCompatActivity {
                     dialogBuilder.setMessage("\n얼마를 주문하겠습니까?(참여 후에는 수정이 불가능하니, 신중하게 입력해주세요.)");
 
                 final EditText et = new EditText(DetailActivity.this);
+                et.setInputType(InputType.TYPE_CLASS_NUMBER);
+
                 dialogBuilder.setView(et);
 
                 dialogBuilder.setPositiveButton("참여", new DialogInterface.OnClickListener() {
