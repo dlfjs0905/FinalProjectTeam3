@@ -63,7 +63,9 @@
                         android:layout_width="144dp"
                         android:layout_height="40dp"
                         android:layout_marginTop="10dp"
+                        android:layout_marginRight="10dp"
                         android:layout_marginBottom="15dp"
+                        android:background="@drawable/textline"
                         android:gravity="center"
                         android:text="음식이름"
                         android:textAlignment="center"
@@ -74,8 +76,10 @@
                         android:id="@+id/writeFoodDetail"
                         android:layout_width="144dp"
                         android:layout_height="40dp"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="15dp"
+                        android:background="@drawable/textline"
                         android:gravity="center"
                         android:text="음식이름"
                         android:textAlignment="center"
@@ -300,56 +304,61 @@
 
             </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="10dp">
-            <ImageView
-                android:id="@+id/imageView30"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_marginTop="5dp"
-                app:srcCompat="@drawable/joinlist" />
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp">
+                <ImageView
+                    android:id="@+id/imageView30"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="5dp"
+                    app:srcCompat="@drawable/joinlist" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal"
+                    android:gravity="center">
 
-                <TextView
-                    android:id="@+id/number"
-                    android:layout_width="0dp"
-                    android:layout_weight="2.5"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textSize="15sp"
-                    android:textColor="#353535"
-                    android:text="1(글쓴이)"/>
-                <TextView
-                    android:id="@+id/joinid"
-                    android:layout_width="0dp"
-                    android:layout_weight="6"
-                    android:textSize="15sp"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:textColor="#353535"
-                    android:text="아이디"/>
-                <TextView
-                    android:id="@+id/joinPrice"
-                    android:layout_width="0dp"
-                    android:layout_weight="2.5"
-                    android:textSize="15sp"
-                    android:layout_height="wrap_content"
-                    android:textColor="#353535"
-                    android:textAlignment="center"
-                    android:text="금액"/>
+                    <TextView
+                        android:id="@+id/number"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_weight="2.5"
+                        android:background="@drawable/boldbar"
+                        android:text="1(글쓴이)"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/joinid"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_weight="6"
+                        android:background="@drawable/middlebar"
+                        android:text="아이디"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/joinPrice"
+                        android:layout_width="0dp"
+                        android:layout_height="20dp"
+                        android:layout_weight="2.5"
+                        android:background="@drawable/boldbar"
+                        android:text="금액"
+                        android:textAlignment="center"
+                        android:textColor="#000000"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
             </LinearLayout>
 
-        </LinearLayout>
-
-        <LinearLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1.7"
@@ -367,7 +376,7 @@
                     android:layout_height="147dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:textSize="17sp"
+                    android:textSize="22sp"
                     android:text="글 내용"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/box"
