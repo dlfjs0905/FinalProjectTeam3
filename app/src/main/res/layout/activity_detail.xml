@@ -325,6 +325,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textSize="15sp"
+                    android:textColor="#353535"
                     android:text="1(글쓴이)"/>
                 <TextView
                     android:id="@+id/joinid"
@@ -333,6 +334,7 @@
                     android:textSize="15sp"
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
+                    android:textColor="#353535"
                     android:text="아이디"/>
                 <TextView
                     android:id="@+id/joinPrice"
@@ -340,6 +342,7 @@
                     android:layout_weight="2.5"
                     android:textSize="15sp"
                     android:layout_height="wrap_content"
+                    android:textColor="#353535"
                     android:textAlignment="center"
                     android:text="금액"/>
             </LinearLayout>
